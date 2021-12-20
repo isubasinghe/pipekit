@@ -23,3 +23,7 @@ mkdir /home/$USER/go
 mkdir /home/$USER/go/src
 mkdir /home/$USER/go/src/github.com
 mkdir /home/$USER/go/src/github.com/argoproj
+
+cd /home/$USER/go/src/github.com/argoproj
+git clone https://github.com/argoproj/argo-workflows.git 
+
