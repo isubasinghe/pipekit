@@ -1,14 +1,14 @@
 ---
-title: Starting with argo 
+title: Starting with Argo Workflows
 path: starting-with-argo
 description: null
 date: null
 ---
-# Starting with Argo 
+# Starting with Argo Workflows
 
-## What is Argo?
-Argo is an open source workflow engine for ochestration of jobs (workflows) on Kubernetes. 
-This may sound a bit confusing, especially if you are new to software engineering, like myself. What argo allows you to do is to define 
+## What is Argo Workflows?
+Argo Workflows is an open source workflow engine for ochestration of jobs (workflows) on Kubernetes. 
+This may sound a bit confusing, especially if you are new to software engineering, like myself. What Argo Workflows allows you to do is to define 
 a set of tasks and its dependencies as a directed acyclic graph. 
 
 To further ground what a workflow is, we can examine a particular instance of a workflow, ETL workloads. 
@@ -18,11 +18,11 @@ ETL is quite simple, it follows the three simple steps.
   - Transform - Various preprocessing steps are performed such as cleansing, standardisation. 
   - Load - The new data is loaded into a database for use in downstream tasks. 
 
-Argo is more than just ETL, it is a good fit for general workflows be it CI/CD, Bioinformatics and more. 
-Now that is out of the way, let's get started on running Argo locally, I already have Argo running but I will be following these steps exactly 
+Argo Workflows is more than just ETL, it is a good fit for general workflows be it CI/CD, Bioinformatics and more. 
+Now that is out of the way, let's get started on running Argo Workflows locally, I already have it running but I will be following these steps exactly 
 on a fresh Ubuntu 20.04 LTS installation. 
 
-Alternatively, if you would like to get Argo up and running for testing purposes I have provided some terraform scripts to get Argo running on AWS [here](https://github.com/isubasinghe/pipekit).
+Alternatively, if you would like to get Argo Workflows up and running for testing purposes I have provided some terraform scripts to get it running on AWS [here](https://github.com/isubasinghe/pipekit).
 
 ## Requirements 
 - Docker 
@@ -40,20 +40,14 @@ I have provided the steps for macOS, Windows and Ubuntu below, this should still
 
 ### Windows 
 Installing Docker Desktop on windows is quite simple: 
-
 1. Download the Docker Desktop Installed from [Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/).
-
 2. Double click on the `Docker Desktop Installer.exe` file that you just downloaded. 
-
 3. When the installation finishes, open up PowerShell and check if your installation was successful by running `docker version`. 
 
 ### macOS 
 Installing Docker Desktop on macOS is just as simple as on windows: 
-
 1. Download dmg file from [here](https://docs.docker.com/desktop/mac/install/) depending on your chip, either Intel or Apple silicon. 
-
 2. Double click on the dmg to open the installer, from here you simply need to drag and drop the Docker icon into the Applications folder. 
-
 3. Search for Docker in launchpad and click to launch Docker.
 
 ### Ubuntu 
@@ -97,25 +91,18 @@ Verify docker has been installed correctly by running `docker ps` you should see
 In the case you get a permission error, you need to add setup docker to run without root privileges. 
 
 To do this, you must follow the steps below: 
-
   1. Create the docker group: 
-
   ```bash 
   sudo groupadd docker 
   ```
-
   2. Add your user to the `docker` group: 
-
   ```bash 
   sudo usermod -aG docker $USER 
   ```
-
   3. Run the following command to activate the changes to groups: 
-
   ```bash 
   newgrp docker 
   ```
-
 ### Installing Minikube 
 
 As with Docker, the k8s website [provides](https://minikube.sigs.k8s.io/docs/start/) a more comprehensive guide to installing minikube on various architectures but we will cover the installation of a minikube on x86-64 only. 
@@ -129,7 +116,6 @@ New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
 Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
 ```
 After this we also need to add `minikube` to our PATH, this can be achieved through running: 
-
 ```powershell 
 $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
 if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
@@ -152,7 +138,7 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 ### Installing protoc 
 Your distribution may have protobuf already installed, but I would not recommend using this installation. When I first attempted running 
-Argo on my Fedora installation, protobuf on the system was missing the entirety of the include folder. You may find the installation instructions [here](http://google.github.io/proto-lens/installing-protoc.html), but it is farily simple. 
+Argo Workflows on my Fedora installation, protobuf on the system was missing the entirety of the include folder. You may find the installation instructions [here](http://google.github.io/proto-lens/installing-protoc.html), but it is farily simple. 
 
 #### Windows 
 Unfortunately the protobuf website does not provide instructions for installing protobuf on Windows but it is farily simple because binaries are provided on the github [repository](https://github.com/protocolbuffers/protobuf/releases/). 
@@ -190,11 +176,8 @@ You can of course view the permissions by navigating to `/usr/local` and running
 
 #### Windows 
 Through the nodejs [website](https://nodejs.org/en/download/) you may download the latest installer, here is the link for [node v16.13.1](https://nodejs.org/dist/v16.13.1/node-v16.13.1-x86.msi). 
-
 1. Once you have downloaded the installer, simply double click on it. 
-
 2. The system may ask you if you want to run the software, you should click on run. This should launch the Setup Wizard, make sure the installer adds the binary folder to the PATH variable. 
-
 3. Verify the installation by running `node` on a command prompt. 
 
 
@@ -237,11 +220,8 @@ sudo apt-get install jq
 #### Windows 
 The installer for go provided in the Golang [website](https://go.dev/doc/install) is likely the easiest way to install go on Windows. 
 This is once again the standard `msi` installer we have encountered previously. 
-
 1. Simply download the installer from the [website](https://go.dev/doc/install). 
-
 2. Double click on the installer and follow the prompts to install Go 
-
 3. Verify your installation by opening up a command prompt and typing `go version`. 
 
 #### macOS 
@@ -282,7 +262,7 @@ As with nearly previous steps, refer to the [official website](https://go.dev/do
   If your GOPATH is not set, you need to define it. this is quite simple. Just open up the `~/.bashrc` or `~/.zshrc` file and add 
   `export GOPATH=/home/$USER/go`. Verify the that the path was correctly set by running `go env`. 
 
-## Running Argo 
+## Running Argo Workflows
 
 ### Important notes 
 Please make sure the following is appended to your /etc/hosts file: 
@@ -293,8 +273,8 @@ Please make sure the following is appended to your /etc/hosts file:
 127.0.0.1 mysql
 ```
 
-### Cloning Argo 
-Before we clone argo, let's make sure that our GOPATH is set by running `echo $GOPATH`. 
+### Cloning Argo Workflows
+Before we clone argo workflows, let's make sure that our GOPATH is set by running `echo $GOPATH`. 
 Now we need to clone the argo-workflows into exactly the correct directory. This is critial to ensure everthing works as expected. 
 This directory is `$GOPATH/src/github.com/argoproj/argo-workflows`, you may need to `mkdir` some folders in order to have this structure, feel free to 
 do so and then navigate to `$GOPATH/src/github.com/argoproj`. 
@@ -323,8 +303,8 @@ This can be achieved by:
 eval $(minikube -p minikube docker-env)
 ```
 
-### Running Argo 
-Nice work, now we are finally at a stage where we may run the Argo project. 
+### Running Argo Workflows
+Nice work, now we are finally at a stage where we may run the Argo Workflows project. 
 You may need to install `make` but this is farily straightforward to install through your systems package manager. 
 #### Running the API only 
 To run only the api, you can run the following command: 
@@ -333,7 +313,7 @@ make start API=true
 ```
 
 #### Running the UI 
-To run and use the Argo UI you may run the following command: 
+To run and use the Argo Workflows UI you may run the following command: 
 ```bash 
 make start API=true UI=true
 ```
