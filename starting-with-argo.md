@@ -40,14 +40,20 @@ I have provided the steps for macOS, Windows and Ubuntu below, this should still
 
 ### Windows 
 Installing Docker Desktop on windows is quite simple: 
+
 1. Download the Docker Desktop Installed from [Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/).
+
 2. Double click on the `Docker Desktop Installer.exe` file that you just downloaded. 
+
 3. When the installation finishes, open up PowerShell and check if your installation was successful by running `docker version`. 
 
 ### macOS 
 Installing Docker Desktop on macOS is just as simple as on windows: 
+
 1. Download dmg file from [here](https://docs.docker.com/desktop/mac/install/) depending on your chip, either Intel or Apple silicon. 
+
 2. Double click on the dmg to open the installer, from here you simply need to drag and drop the Docker icon into the Applications folder. 
+
 3. Search for Docker in launchpad and click to launch Docker.
 
 ### Ubuntu 
@@ -91,18 +97,25 @@ Verify docker has been installed correctly by running `docker ps` you should see
 In the case you get a permission error, you need to add setup docker to run without root privileges. 
 
 To do this, you must follow the steps below: 
+
   1. Create the docker group: 
+
   ```bash 
   sudo groupadd docker 
   ```
+
   2. Add your user to the `docker` group: 
+
   ```bash 
   sudo usermod -aG docker $USER 
   ```
+
   3. Run the following command to activate the changes to groups: 
+
   ```bash 
   newgrp docker 
   ```
+
 ### Installing Minikube 
 
 As with Docker, the k8s website [provides](https://minikube.sigs.k8s.io/docs/start/) a more comprehensive guide to installing minikube on various architectures but we will cover the installation of a minikube on x86-64 only. 
@@ -116,6 +129,7 @@ New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
 Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
 ```
 After this we also need to add `minikube` to our PATH, this can be achieved through running: 
+
 ```powershell 
 $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
 if ($oldPath.Split(';') -inotcontains 'C:\minikube'){ `
@@ -176,8 +190,11 @@ You can of course view the permissions by navigating to `/usr/local` and running
 
 #### Windows 
 Through the nodejs [website](https://nodejs.org/en/download/) you may download the latest installer, here is the link for [node v16.13.1](https://nodejs.org/dist/v16.13.1/node-v16.13.1-x86.msi). 
+
 1. Once you have downloaded the installer, simply double click on it. 
+
 2. The system may ask you if you want to run the software, you should click on run. This should launch the Setup Wizard, make sure the installer adds the binary folder to the PATH variable. 
+
 3. Verify the installation by running `node` on a command prompt. 
 
 
@@ -220,8 +237,11 @@ sudo apt-get install jq
 #### Windows 
 The installer for go provided in the Golang [website](https://go.dev/doc/install) is likely the easiest way to install go on Windows. 
 This is once again the standard `msi` installer we have encountered previously. 
+
 1. Simply download the installer from the [website](https://go.dev/doc/install). 
+
 2. Double click on the installer and follow the prompts to install Go 
+
 3. Verify your installation by opening up a command prompt and typing `go version`. 
 
 #### macOS 
