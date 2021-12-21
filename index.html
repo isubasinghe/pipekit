@@ -237,9 +237,19 @@
 <h3 id="installing-docker">Installing Docker</h3>
 <p>The Docker website <a href="https://docs.docker.com/get-docker/">provides</a> a comprehensive guide into installing docker. I have provided the steps for macOS, Windows and Ubuntu below, this should still provide help when installing Docker on other distributions.</p>
 <h3 id="windows">Windows</h3>
-<p>Installing Docker Desktop on windows is quite simple: 1. Download the Docker Desktop Installed from <a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows/">Docker Hub</a>. 2. Double click on the <code>Docker Desktop Installer.exe</code> file that you just downloaded. 3. When the installation finishes, open up PowerShell and check if your installation was successful by running <code>docker version</code>.</p>
+<p>Installing Docker Desktop on windows is quite simple:</p>
+<ol type="1">
+<li><p>Download the Docker Desktop Installed from <a href="https://hub.docker.com/editions/community/docker-ce-desktop-windows/">Docker Hub</a>.</p></li>
+<li><p>Double click on the <code>Docker Desktop Installer.exe</code> file that you just downloaded.</p></li>
+<li><p>When the installation finishes, open up PowerShell and check if your installation was successful by running <code>docker version</code>.</p></li>
+</ol>
 <h3 id="macos">macOS</h3>
-<p>Installing Docker Desktop on macOS is just as simple as on windows: 1. Download dmg file from <a href="https://docs.docker.com/desktop/mac/install/">here</a> depending on your chip, either Intel or Apple silicon. 2. Double click on the dmg to open the installer, from here you simply need to drag and drop the Docker icon into the Applications folder. 3. Search for Docker in launchpad and click to launch Docker.</p>
+<p>Installing Docker Desktop on macOS is just as simple as on windows:</p>
+<ol type="1">
+<li><p>Download dmg file from <a href="https://docs.docker.com/desktop/mac/install/">here</a> depending on your chip, either Intel or Apple silicon.</p></li>
+<li><p>Double click on the dmg to open the installer, from here you simply need to drag and drop the Docker icon into the Applications folder.</p></li>
+<li><p>Search for Docker in launchpad and click to launch Docker.</p></li>
+</ol>
 <h3 id="ubuntu">Ubuntu</h3>
 <h4 id="uninstall-old-versions">Uninstall old versions</h4>
 <p>If you already have an old version of docker, you may first uninstall that. This can be fairly easily achieved through running:</p>
@@ -261,86 +271,109 @@
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install docker-ce docker-ce-cli containerd.io </span></code></pre></div>
 <p>Verify docker has been installed correctly by running <code>docker ps</code> you should see output like this: <img src="https://github.com/isubasinghe/pipekit/raw/main/docker.png" alt="docker command line output of CONTAINER ID IMAGE COMMAND CREATED STATUS  PORTS NAMES"/></p>
 <p>In the case you get a permission error, you need to add setup docker to run without root privileges.</p>
-<p>To do this, you must follow the steps below: 1. Create the docker group: <code>bash    sudo groupadd docker</code> 2. Add your user to the <code>docker</code> group: <code>bash    sudo usermod -aG docker $USER</code> 3. Run the following command to activate the changes to groups: <code>bash    newgrp docker</code> ### Installing Minikube</p>
+<p>To do this, you must follow the steps below:</p>
+<ol type="1">
+<li>Create the docker group:</li>
+</ol>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> groupadd docker </span></code></pre></div>
+<ol start="2" type="1">
+<li>Add your user to the <code>docker</code> group:</li>
+</ol>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> usermod <span class="at">-aG</span> docker <span class="va">$USER</span> </span></code></pre></div>
+<ol start="3" type="1">
+<li>Run the following command to activate the changes to groups:</li>
+</ol>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">newgrp</span> docker </span></code></pre></div>
+<h3 id="installing-minikube">Installing Minikube</h3>
 <p>As with Docker, the k8s website <a href="https://minikube.sigs.k8s.io/docs/start/">provides</a> a more comprehensive guide to installing minikube on various architectures but we will cover the installation of a minikube on x86-64 only.</p>
 <h4 id="windows-1">Windows</h4>
 <p>To install the latest minikube stable: Download the latest release by running the following PowerShell command:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>Path &#39;c<span class="op">:</span>\&#39; <span class="op">-</span>Name &#39;minikube&#39; <span class="op">-</span>ItemType Directory <span class="op">-</span>Force</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Invoke-WebRequest</span> <span class="op">-</span>OutFile &#39;c<span class="op">:</span>\minikube\minikube<span class="op">.</span><span class="fu">exe</span>&#39; <span class="op">-</span>Uri &#39;https<span class="op">://</span>github<span class="op">.</span><span class="fu">com</span><span class="op">/</span>kubernetes<span class="op">/</span>minikube<span class="op">/</span>releases<span class="op">/</span>latest<span class="op">/</span>download<span class="op">/</span>minikube<span class="op">-</span>windows<span class="op">-</span>amd64<span class="op">.</span><span class="fu">exe</span>&#39; <span class="op">-</span>UseBasicParsing</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">New-Item</span> <span class="op">-</span>Path &#39;c<span class="op">:</span>\&#39; <span class="op">-</span>Name &#39;minikube&#39; <span class="op">-</span>ItemType Directory <span class="op">-</span>Force</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">Invoke-WebRequest</span> <span class="op">-</span>OutFile &#39;c<span class="op">:</span>\minikube\minikube<span class="op">.</span><span class="fu">exe</span>&#39; <span class="op">-</span>Uri &#39;https<span class="op">://</span>github<span class="op">.</span><span class="fu">com</span><span class="op">/</span>kubernetes<span class="op">/</span>minikube<span class="op">/</span>releases<span class="op">/</span>latest<span class="op">/</span>download<span class="op">/</span>minikube<span class="op">-</span>windows<span class="op">-</span>amd64<span class="op">.</span><span class="fu">exe</span>&#39; <span class="op">-</span>UseBasicParsing</span></code></pre></div>
 <p>After this we also need to add <code>minikube</code> to our PATH, this can be achieved through running:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="va">$oldPath</span> <span class="op">=</span> <span class="op">[</span>Environment<span class="op">]::</span>GetEnvironmentVariable<span class="op">(</span>&#39;Path&#39;<span class="op">,</span> <span class="op">[</span>EnvironmentVariableTarget<span class="op">]::</span>Machine<span class="op">)</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> <span class="op">(</span><span class="va">$oldPath</span><span class="op">.</span><span class="fu">Split</span><span class="op">(</span>&#39;<span class="op">;</span>&#39;<span class="op">)</span> <span class="op">-</span>inotcontains &#39;C<span class="op">:</span>\minikube&#39;<span class="op">){</span> `</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">[</span>Environment<span class="op">]::</span>SetEnvironmentVariable<span class="op">(</span>&#39;Path&#39;<span class="op">,</span> $<span class="op">(</span>&#39;<span class="op">{</span>0<span class="op">};</span>C<span class="op">:</span>\minikube&#39; <span class="op">-</span>f <span class="va">$oldPath</span><span class="op">),</span> <span class="op">[</span>EnvironmentVariableTarget<span class="op">]::</span>Machine<span class="op">)</span> `</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="va">$oldPath</span> <span class="op">=</span> <span class="op">[</span>Environment<span class="op">]::</span>GetEnvironmentVariable<span class="op">(</span>&#39;Path&#39;<span class="op">,</span> <span class="op">[</span>EnvironmentVariableTarget<span class="op">]::</span>Machine<span class="op">)</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> <span class="op">(</span><span class="va">$oldPath</span><span class="op">.</span><span class="fu">Split</span><span class="op">(</span>&#39;<span class="op">;</span>&#39;<span class="op">)</span> <span class="op">-</span>inotcontains &#39;C<span class="op">:</span>\minikube&#39;<span class="op">){</span> `</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="op">[</span>Environment<span class="op">]::</span>SetEnvironmentVariable<span class="op">(</span>&#39;Path&#39;<span class="op">,</span> $<span class="op">(</span>&#39;<span class="op">{</span>0<span class="op">};</span>C<span class="op">:</span>\minikube&#39; <span class="op">-</span>f <span class="va">$oldPath</span><span class="op">),</span> <span class="op">[</span>EnvironmentVariableTarget<span class="op">]::</span>Machine<span class="op">)</span> `</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
 <h4 id="macos-1">macOS</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LO</span> https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> install minikube-darwin-amd64 /usr/local/bin/minikube </span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LO</span> https://storage.googleapis.com/minikube/releases/latest/minikube-darwin-amd64</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> install minikube-darwin-amd64 /usr/local/bin/minikube </span></code></pre></div>
 <h4 id="ubuntu-1">Ubuntu</h4>
 <p>The process is quite straightforward, simply run the command below:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LO</span> https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> install minikube-linux-amd64 /usr/local/bin/minikube</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-LO</span> https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> install minikube-linux-amd64 /usr/local/bin/minikube</span></code></pre></div>
 <h3 id="installing-protoc">Installing protoc</h3>
 <p>Your distribution may have protobuf already installed, but I would not recommend using this installation. When I first attempted running Argo Workflows on my Fedora installation, protobuf on the system was missing the entirety of the include folder. You may find the installation instructions <a href="http://google.github.io/proto-lens/installing-protoc.html">here</a>, but it is farily simple.</p>
 <h4 id="windows-2">Windows</h4>
 <p>Unfortunately the protobuf website does not provide instructions for installing protobuf on Windows but it is farily simple because binaries are provided on the github <a href="https://github.com/protocolbuffers/protobuf/releases/">repository</a>. Simply download these and extract them to a directory (such as <code>C:\Program Files\protobuf</code>) and add the <code>bin</code> and <code>include</code> directories to the PATH variable.</p>
 <h4 id="macos-2">macOS</h4>
 <p>The steps are given below for macOS but note that this is not for the latest apple silicon but x86-64. Binaries have not been released for apple silicon at the time of writing this. Here are the steps:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="va">PROTOC_ZIP</span><span class="op">=</span>protoc-3.14.0-osx-x86_64.zip</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-OL</span> https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/<span class="va">$PROTOC_ZIP</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> unzip <span class="at">-o</span> <span class="va">$PROTOC_ZIP</span> <span class="at">-d</span> /usr/local bin/protoc</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> unzip <span class="at">-o</span> <span class="va">$PROTOC_ZIP</span> <span class="at">-d</span> /usr/local <span class="st">&#39;include/*&#39;</span></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> <span class="va">$PROTOC_ZIP</span></span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="va">PROTOC_ZIP</span><span class="op">=</span>protoc-3.14.0-osx-x86_64.zip</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-OL</span> https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/<span class="va">$PROTOC_ZIP</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> unzip <span class="at">-o</span> <span class="va">$PROTOC_ZIP</span> <span class="at">-d</span> /usr/local bin/protoc</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> unzip <span class="at">-o</span> <span class="va">$PROTOC_ZIP</span> <span class="at">-d</span> /usr/local <span class="st">&#39;include/*&#39;</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> <span class="va">$PROTOC_ZIP</span></span></code></pre></div>
 <h4 id="ubuntu-2">Ubuntu</h4>
 <p>The steps are given below for Ubuntu: First install <code>zip</code> and <code>unzip</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install zip </span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install zip </span></code></pre></div>
 <p>Now we may install protobuf through:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="va">PROTOC_ZIP</span><span class="op">=</span>protoc-3.14.0-linux-x86_64.zip</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-OL</span> https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/<span class="va">$PROTOC_ZIP</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> unzip <span class="at">-o</span> <span class="va">$PROTOC_ZIP</span> <span class="at">-d</span> /usr/local bin/protoc</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> unzip <span class="at">-o</span> <span class="va">$PROTOC_ZIP</span> <span class="at">-d</span> /usr/local <span class="st">&#39;include/*&#39;</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> <span class="va">$PROTOC_ZIP</span></span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="va">PROTOC_ZIP</span><span class="op">=</span>protoc-3.14.0-linux-x86_64.zip</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-OL</span> https://github.com/protocolbuffers/protobuf/releases/download/v3.14.0/<span class="va">$PROTOC_ZIP</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> unzip <span class="at">-o</span> <span class="va">$PROTOC_ZIP</span> <span class="at">-d</span> /usr/local bin/protoc</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> unzip <span class="at">-o</span> <span class="va">$PROTOC_ZIP</span> <span class="at">-d</span> /usr/local <span class="st">&#39;include/*&#39;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">rm</span> <span class="at">-f</span> <span class="va">$PROTOC_ZIP</span></span></code></pre></div>
 <p>Try running <code>protoc</code> now, if you get a permission error, simply run <code>sudo chmod +x $(which protoc)</code>. You can of course view the permissions by navigating to <code>/usr/local</code> and running <code>ls -lah</code>.</p>
 <h3 id="installing-yarn-npm-and-node">Installing Yarn, Npm and Node</h3>
 <h4 id="windows-3">Windows</h4>
-<p>Through the nodejs <a href="https://nodejs.org/en/download/">website</a> you may download the latest installer, here is the link for <a href="https://nodejs.org/dist/v16.13.1/node-v16.13.1-x86.msi">node v16.13.1</a>. 1. Once you have downloaded the installer, simply double click on it. 2. The system may ask you if you want to run the software, you should click on run. This should launch the Setup Wizard, make sure the installer adds the binary folder to the PATH variable. 3. Verify the installation by running <code>node</code> on a command prompt.</p>
+<p>Through the nodejs <a href="https://nodejs.org/en/download/">website</a> you may download the latest installer, here is the link for <a href="https://nodejs.org/dist/v16.13.1/node-v16.13.1-x86.msi">node v16.13.1</a>.</p>
+<ol type="1">
+<li><p>Once you have downloaded the installer, simply double click on it.</p></li>
+<li><p>The system may ask you if you want to run the software, you should click on run. This should launch the Setup Wizard, make sure the installer adds the binary folder to the PATH variable.</p></li>
+<li><p>Verify the installation by running <code>node</code> on a command prompt.</p></li>
+</ol>
 <h4 id="linux-macos">Linux &amp; macOS</h4>
 <p>I would recommend installing <code>npm</code> and <code>node</code> via <a href="https://github.com/nvm-sh/nvm">nvm</a>. The install process is quite simply, just run:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh <span class="kw">|</span> <span class="fu">bash</span> </span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">curl</span> <span class="at">-o-</span> https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh <span class="kw">|</span> <span class="fu">bash</span> </span></code></pre></div>
 <p>You should of course run <code>source ~/.bashrc</code> or <code>source /.zshrc</code> after this and verify the installation by running <code>nvm</code>.</p>
 <p>Following this, you can install node by <code>nvm install node</code>. To install yarn, you may simply run <code>npm install -g yarn</code> after this step.</p>
 <h3 id="installing-jq">Installing jq</h3>
 <p><code>jq</code> is the one item in this list that I would recommend installing through your system itself (apt/dnf/yum), you may get a slightly outdated version but it shouldn’t matter as much as the other tools.</p>
 <h4 id="macos-3">macOS</h4>
 <p>On macOS simply run:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install jq </span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install jq </span></code></pre></div>
 <h4 id="windows-4">Windows</h4>
 <p>The steps on Windows are a bit more complex. First download a windows executable from <a href="https://github.com/stedolan/jq/releases">here</a>. After the download make sure to rename your exe which at the time of writing had this format <code>jq-win(32|64).exe</code> to just <code>jq.exe</code>. The move the executable to <code>C:\Program Files\jq\</code>, the executable should now be located at <code>C:\Program Files\jq\jq.exe</code>. Finally add this folder to the PATH variable.</p>
 <h4 id="ubuntu-3">Ubuntu</h4>
 <p>On Ubuntu, simply run:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install jq </span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> apt-get install jq </span></code></pre></div>
 <h3 id="installing-go">Installing Go</h3>
 <h4 id="windows-5">Windows</h4>
-<p>The installer for go provided in the Golang <a href="https://go.dev/doc/install">website</a> is likely the easiest way to install go on Windows. This is once again the standard <code>msi</code> installer we have encountered previously. 1. Simply download the installer from the <a href="https://go.dev/doc/install">website</a>. 2. Double click on the installer and follow the prompts to install Go 3. Verify your installation by opening up a command prompt and typing <code>go version</code>.</p>
+<p>The installer for go provided in the Golang <a href="https://go.dev/doc/install">website</a> is likely the easiest way to install go on Windows. This is once again the standard <code>msi</code> installer we have encountered previously.</p>
+<ol type="1">
+<li><p>Simply download the installer from the <a href="https://go.dev/doc/install">website</a>.</p></li>
+<li><p>Double click on the installer and follow the prompts to install Go</p></li>
+<li><p>Verify your installation by opening up a command prompt and typing <code>go version</code>.</p></li>
+</ol>
 <h4 id="macos-4">macOS</h4>
 <p>Brew typically contains the latest release of golang and we should have an easier installtion method by using <code>brew</code>, simply run the commands below to get Go on macOS through brew:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install go </span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="ex">brew</span> install go </span></code></pre></div>
 <h4 id="linux">Linux</h4>
 <p>As with nearly previous steps, refer to the <a href="https://go.dev/doc/install">official website</a> for a comprehensive guide but I will now cover how I installed go 1.17.5 on my Ubuntu installation.</p>
 <ol type="1">
 <li>Download the binaries A link for the binaries is provided in the website above but here it is anyway: <a href="https://go.dev/dl/go1.17.5.linux-amd64.tar.gz">https://go.dev/dl/go1.17.5.linux-amd64.tar.gz</a>. This can be performed on the command line by running the below command:</li>
 </ol>
-<div class="sourceCode" id="cb18"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://go.dev/dl/go1.17.5.linux-amd64.tar.gz</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wget</span> https://go.dev/dl/go1.17.5.linux-amd64.tar.gz</span></code></pre></div>
 <p>You should be able to run <code>ls</code> to verify that the download was successful.</p>
 <ol start="2" type="1">
 <li>Extract the archive This can be done by running the following command:</li>
 </ol>
-<div class="sourceCode" id="cb19"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> /usr/local/go <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> tar <span class="at">-C</span> /usr/local <span class="at">-xzf</span> go1.17.5.linux-amd64.tar.gz</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sudo</span> rm <span class="at">-rf</span> /usr/local/go <span class="kw">&amp;&amp;</span> <span class="fu">sudo</span> tar <span class="at">-C</span> /usr/local <span class="at">-xzf</span> go1.17.5.linux-amd64.tar.gz</span></code></pre></div>
 <ol start="3" type="1">
 <li><p>Add /usr/local/go/bin to the PATH environment variable. Open up your ~/.bashrc or ~/.zshrc file and add the /usr/local/go/bin path to it. This is quite simply done in bash by adding the following line: <code>export PATH=$PATH:/usr/local/go/bin</code>.</p></li>
 <li><p>Verify installation of Go. If you are still in the same shell, it is likely that your PATH variable has not been updated. To apply the changes without leaving the shell run <code>source ~/.bashrc</code> or <code>source ~/.zshrc</code> or similar depending on your shell. You should be able to verify the existance of Golang by running <code>go version</code>.</p></li>
 <li><p>Set the GOPATH. First make a directory called <code>go</code> in your home directory. This is achieved through:</p></li>
 </ol>
-<div class="sourceCode" id="cb20"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> /home/<span class="va">$USER</span>/go </span></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> /home/<span class="va">$USER</span>/go </span></code></pre></div>
 <p>If your GOPATH is not set, you need to define it. this is quite simple. Just open up the <code>~/.bashrc</code> or <code>~/.zshrc</code> file and add <code>export GOPATH=/home/$USER/go</code>. Verify the that the path was correctly set by running <code>go env</code>.</p>
 <h2 id="running-argo-workflows">Running Argo Workflows</h2>
 <h3 id="important-notes">Important notes</h3>
@@ -351,22 +384,24 @@
 127.0.0.1 mysql</code></pre>
 <h3 id="cloning-argo-workflows">Cloning Argo Workflows</h3>
 <p>Before we clone argo workflows, let’s make sure that our GOPATH is set by running <code>echo $GOPATH</code>. Now we need to clone the argo-workflows into exactly the correct directory. This is critial to ensure everthing works as expected. This directory is <code>$GOPATH/src/github.com/argoproj/argo-workflows</code>, you may need to <code>mkdir</code> some folders in order to have this structure, feel free to do so and then navigate to <code>$GOPATH/src/github.com/argoproj</code>. From here we may clone the project by running:</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:argoproj/argo-workflows.git </span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> argo-workflows</span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone git@github.com:argoproj/argo-workflows.git </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> argo-workflows</span></code></pre></div>
 <h3 id="starting-minikube">Starting minikube</h3>
 <p>In order to start minikube we can run:</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="ex">minikube</span> start </span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="ex">minikube</span> start </span></code></pre></div>
 <p>You may also view the status of minikube by running:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="ex">minikube</span> status </span></code></pre></div>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="ex">minikube</span> status </span></code></pre></div>
 <p>Of course, had you installed <code>kubectl</code>, you would also be able to view information about the cluster.</p>
 <h3 id="setting-up-docker-for-minikube.">Setting up docker for minikube.</h3>
 <p>minikube runs in a VM, the docker images you build locally are not accessible to the docker deamon in minikube. You need to build your images on the docker deamon in minikube. You can do this by pointing the docker host to minikube. This can be achieved by:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="va">$(</span><span class="ex">minikube</span> <span class="at">-p</span> minikube docker-env<span class="va">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="bu">eval</span> <span class="va">$(</span><span class="ex">minikube</span> <span class="at">-p</span> minikube docker-env<span class="va">)</span></span></code></pre></div>
 <h3 id="running-argo-workflows-1">Running Argo Workflows</h3>
-<p>Nice work, now we are finally at a stage where we may run the Argo Workflows project. You may need to install <code>make</code> but this is farily straightforward to install through your systems package manager. #### Running the API only To run only the api, you can run the following command:</p>
-<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> start API=true</span></code></pre></div>
+<p>Nice work, now we are finally at a stage where we may run the Argo Workflows project. You may need to install <code>make</code> but this is farily straightforward to install through your systems package manager.</p>
+<h4 id="running-the-api-only">Running the API only</h4>
+<p>To run only the api, you can run the following command:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> start API=true</span></code></pre></div>
 <h4 id="running-the-ui">Running the UI</h4>
 <p>To run and use the Argo Workflows UI you may run the following command:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> start API=true UI=true</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">make</span> start API=true UI=true</span></code></pre></div>
 </body>
 </html>
