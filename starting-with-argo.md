@@ -4,7 +4,7 @@ path: starting-with-argo
 description: null
 date: null
 ---
-# How to Run the Argo Workflows codebase locally
+# How to Run the Argo Workflows Codebase Locally
 
 In this tutorial, you'll learn how to run the Argo Workflows codebase locally, including the API and UI, using the [minikube](https://minikube.sigs.k8s.io/docs/) distribution of Kubernetes. We'll install each dependency step-by-step, with instructions for Windows, macOS, and Ubuntu-Linux.
 
