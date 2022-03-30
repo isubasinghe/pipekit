@@ -298,7 +298,7 @@ git clone git@github.com:argoproj/argo-workflows.git
 cd argo-workflows
 ```
 
-## Starting minikube
+## Running minikube
 In order to start minikube we can run:
 ```bash
 minikube start
@@ -309,7 +309,7 @@ minikube status
 ```
 Of course, had you installed `kubectl`, you would also be able to view information about the cluster.
 
-## Setting up Docker for minikube
+### Setting up Docker for minikube
 Since minikube runs in a VM, the Docker images you build locally are not accessible to the Docker deamon in minikube.
 You need to build your images on the Docker deamon in minikube. You can do this by pointing the Docker host to minikube.
 This can be achieved by:
@@ -332,3 +332,15 @@ To run and use the Argo Workflows UI you may run the following command:
 ```bash
 make start API=true UI=true
 ```
+
+## Conclusion
+Congratulations on running Argo Workflows locally with minikube! You're now ready to develop on the project.
+
+If you haven't already, make sure to check out the [Argo Workflows contributor guidelines](https://argoproj.github.io/argo-workflows/CONTRIBUTING/) and watch the [contributor workshop recording](https://www.youtube.com/watch?v=zZv0lNCDG9w) on YouTube.
+
+And make sure to run the following before committing code:
+```bash
+make pre-commit -B
+```
+
+We'd love to hear any feedback that would help improve this tutorial, please let us know by emailing hello@pipekit.io.
