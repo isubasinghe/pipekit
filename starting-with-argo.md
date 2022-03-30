@@ -22,8 +22,7 @@ That said, Argo Workflows can do more than just ETL. It's a good fit for general
 
 ## How to run Argo Workflows
 
-Now that is out of the way, let's get started on running Argo Workflows locally, I already have it running but I will be following these steps exactly
-on a fresh Ubuntu 20.04 LTS installation.
+Now that is out of the way, let's get started on running Argo Workflows locally. For the Ubuntu steps, we will be following these steps exactly on a fresh Ubuntu 20.04 LTS installation.
 
 Alternatively, if you would like to get Argo Workflows up and running in the cloud, I have provided some [Terraform scripts here](https://github.com/isubasinghe/pipekit) to get it running on AWS.
 
@@ -41,7 +40,7 @@ Alternatively, if you would like to get Argo Workflows up and running in the clo
 The Docker website [provides](https://docs.docker.com/get-docker/) a comprehensive guide into installing docker.
 I have provided the steps for macOS, Windows and Ubuntu below, this should still provide help when installing Docker on other distributions.
 
-### Windows
+#### Windows
 Installing Docker Desktop on windows is quite simple:
 
 1. Download the Docker Desktop Installed from [Docker Hub](https://hub.docker.com/editions/community/docker-ce-desktop-windows/).
@@ -50,7 +49,7 @@ Installing Docker Desktop on windows is quite simple:
 
 3. When the installation finishes, open up PowerShell and check if your installation was successful by running `docker version`.
 
-### macOS
+#### macOS
 Installing Docker Desktop on macOS is just as simple as on windows:
 
 1. Download dmg file from [here](https://docs.docker.com/desktop/mac/install/) depending on your chip, either Intel or Apple silicon.
@@ -59,9 +58,9 @@ Installing Docker Desktop on macOS is just as simple as on windows:
 
 3. Search for Docker in launchpad and click to launch Docker.
 
-### Ubuntu
+#### Ubuntu
 
-#### Uninstall old versions
+##### Uninstall old versions
 If you already have an old version of docker, you may first uninstall that. This can be fairly easily achieved through running:
 ```bash
 sudo apt-get remove docker docker-engine docker.io containerd runc
@@ -71,7 +70,7 @@ remove these first, you may run:
 ```bash
 docker system prune --all
 ```
-#### Install using the repository
+##### Install using the repository
 First let's install the utilities we need to add the docker repository by running the two commands below:
 ```bash
 sudo apt-get update
@@ -121,7 +120,7 @@ To do this, you must follow the steps below:
 
 ### Installing Minikube
 
-As with Docker, the k8s website [provides](https://minikube.sigs.k8s.io/docs/start/) a more comprehensive guide to installing minikube on various architectures but we will cover the installation of a minikube on x86-64 only.
+As with Docker, the k8s website [provides](https://minikube.sigs.k8s.io/docs/start/) a more comprehensive guide to installing minikube on various architectures, so we will cover the installation of a minikube on x86-64 only.
 
 #### Windows
 To install the latest minikube stable:
@@ -154,7 +153,7 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 
 ### Installing protoc
 Your distribution may have protobuf already installed, but I would not recommend using this installation. When I first attempted running
-Argo Workflows on my Fedora installation, protobuf on the system was missing the entirety of the include folder. You may find the installation instructions [here](http://google.github.io/proto-lens/installing-protoc.html), but it is farily simple.
+Argo Workflows on my Fedora installation, protobuf on the system was missing the entirety of the include folder. You may find the installation instructions [here](http://google.github.io/proto-lens/installing-protoc.html), but it is fairly simple.
 
 #### Windows
 Unfortunately the protobuf website does not provide instructions for installing protobuf on Windows but it is farily simple because binaries are provided on the github [repository](https://github.com/protocolbuffers/protobuf/releases/).
@@ -200,7 +199,7 @@ Through the nodejs [website](https://nodejs.org/en/download/) you may download t
 3. Verify the installation by running `node` on a command prompt.
 
 
-#### Linux & macOS
+#### macOS & Ubuntu
 I would recommend installing `npm` and `node` via [nvm](https://github.com/nvm-sh/nvm).
 The install process is quite simply, just run:
 ```bash
@@ -212,21 +211,20 @@ Following this, you can install node by `nvm install node`.
 To install yarn, you may simply run `npm install -g yarn` after this step.
 
 ### Installing jq
-`jq` is the one item in this list that I would recommend installing through your system itself (apt/dnf/yum), you may get a slightly outdated version but it shouldn't matter as much as the other tools.
+`jq` is the one item in this list that I would recommend installing through your system itself (apt/dnf/yum), you may get a slightly outdated version, but it shouldn't matter as much as the other tools.
+
+#### Windows
+The steps on Windows are a bit more complex.
+1. Download a windows executable from [here](https://github.com/stedolan/jq/releases).
+2. Rename your exe which at the time of writing had this format `jq-win(32|64).exe` to just `jq.exe`.
+3. Then move the executable to `C:\Program Files\jq\`, the executable should now be located at `C:\Program Files\jq\jq.exe`.
+4. Add this folder to the PATH variable.
 
 #### macOS
 On macOS simply run:
 ```bash  
 brew install jq
 ```
-
-#### Windows
-The steps on Windows are a bit more complex.
-First download a windows executable from [here](https://github.com/stedolan/jq/releases).
-After the download make sure to rename your exe which at the time of writing had this format `jq-win(32|64).exe` to just `jq.exe`.
-The move the executable to `C:\Program Files\jq\`, the executable should now be located at `C:\Program Files\jq\jq.exe`.
-Finally add this folder to the PATH variable.
-
 
 #### Ubuntu
 On Ubuntu, simply run:
@@ -252,7 +250,7 @@ Brew typically contains the latest release of golang and we should have an easie
 brew install go
 ```
 
-#### Linux
+#### Ubuntu
 As with nearly previous steps, refer to the [official website](https://go.dev/doc/install) for a comprehensive guide but I will now cover how I installed go 1.17.5 on my Ubuntu installation.
 
 1. Download the binaries
@@ -298,7 +296,7 @@ Please make sure the following is appended to your /etc/hosts file:
 
 ### Cloning Argo Workflows
 Before we clone argo workflows, let's make sure that our GOPATH is set by running `echo $GOPATH`.
-Now we need to clone the argo-workflows into exactly the correct directory. This is critial to ensure everthing works as expected.
+Now we need to clone the argo-workflows into exactly the correct directory. This is critical to ensure everything works as expected.
 This directory is `$GOPATH/src/github.com/argoproj/argo-workflows`, you may need to `mkdir` some folders in order to have this structure, feel free to
 do so and then navigate to `$GOPATH/src/github.com/argoproj`.
 From here we may clone the project by running:
