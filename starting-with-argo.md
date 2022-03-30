@@ -283,9 +283,7 @@ As with nearly previous steps, refer to the [official website](https://go.dev/do
   If your GOPATH is not set, you need to define it. this is quite simple. Just open up the `~/.bashrc` or `~/.zshrc` file and add
   `export GOPATH=/home/$USER/go`. Verify the that the path was correctly set by running `go env`.
 
-## Running Argo Workflows
-
-### Important notes
+### Other important notes
 Please make sure the following is appended to your /etc/hosts file:
 ```text
 127.0.0.1 dex
@@ -294,9 +292,9 @@ Please make sure the following is appended to your /etc/hosts file:
 127.0.0.1 mysql
 ```
 
-### Cloning Argo Workflows
-Before we clone argo workflows, let's make sure that our GOPATH is set by running `echo $GOPATH`.
-Now we need to clone the argo-workflows into exactly the correct directory. This is critical to ensure everything works as expected.
+## Cloning the Argo Workflows repository
+Before we clone Argo Workflows, let's make sure that our GOPATH is set by running `echo $GOPATH`.
+Now we need to clone the argo-workflows repo into exactly the correct directory. This is critical to ensure everything works as expected.
 This directory is `$GOPATH/src/github.com/argoproj/argo-workflows`, you may need to `mkdir` some folders in order to have this structure, feel free to
 do so and then navigate to `$GOPATH/src/github.com/argoproj`.
 From here we may clone the project by running:
@@ -305,7 +303,7 @@ git clone git@github.com:argoproj/argo-workflows.git
 cd argo-workflows
 ```
 
-### Starting minikube
+## Starting minikube
 In order to start minikube we can run:
 ```bash
 minikube start
@@ -316,25 +314,25 @@ minikube status
 ```
 Of course, had you installed `kubectl`, you would also be able to view information about the cluster.
 
-### Setting up docker for minikube.
-minikube runs in a VM, the docker images you build locally are not accessible to the docker deamon in minikube.
-You need to build your images on the docker deamon in minikube. You can do this by pointing the docker host to minikube.
+## Setting up Docker for minikube
+minikube runs in a VM, the Docker images you build locally are not accessible to the Docker deamon in minikube.
+You need to build your images on the Docker deamon in minikube. You can do this by pointing the Docker host to minikube.
 This can be achieved by:
 ```bash
 eval $(minikube -p minikube docker-env)
 ```
 
-### Running Argo Workflows
-Nice work, now we are finally at a stage where we may run the Argo Workflows project.
-You may need to install `make` but this is farily straightforward to install through your systems package manager.
+## Run Argo Workflows locally
+Nice work, now we are finally at a stage where we can run the Argo Workflows project.
+You may need to install `make` but this is straightforward to install through your systems package manager.
 
-#### Running the API only
+### Run the Argo Workflows API only
 To run only the api, you can run the following command:
 ```bash
 make start API=true
 ```
 
-#### Running the UI
+### Running the Argo Workflows API and UI
 To run and use the Argo Workflows UI you may run the following command:
 ```bash
 make start API=true UI=true
