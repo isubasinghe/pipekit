@@ -6,9 +6,10 @@ date: null
 ---
 # How to Run the Argo Workflows codebase locally
 
-
+In this tutorial, you'll learn how to run the Argo Workflows codebase locally, including the API and UI, using the [minikube](https://minikube.sigs.k8s.io/docs/) distribution of Kubernetes. We'll install each dependency step-by-step, with instructions for Windows, macOS, and Ubuntu-Linux. If you're new to developing on Argo Workflows, this is a perfect place to start.
 
 ## What is Argo Workflows?
+
 Argo Workflows is an open source workflow engine for orchestration of jobs (workflows) on Kubernetes.
 What Argo Workflows allows you to do is to define a set of tasks and its dependencies as a directed acyclic graph (DAG).
 
