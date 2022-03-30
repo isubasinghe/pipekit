@@ -22,7 +22,7 @@ That said, Argo Workflows can do more than just ETL. It's a good fit for general
 
 ## How to run Argo Workflows
 
-Now that is out of the way, let's get started on running Argo Workflows locally. For the Ubuntu steps, we will be following these steps exactly on a fresh Ubuntu 20.04 LTS installation.
+Let's get started on running Argo Workflows locally. For the Ubuntu steps, we will be working with a fresh Ubuntu 20.04 LTS installation.
 
 Alternatively, if you would like to get Argo Workflows up and running in the cloud, I have provided some [Terraform scripts here](https://github.com/isubasinghe/pipekit) to get it running on AWS.
 
