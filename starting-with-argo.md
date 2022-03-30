@@ -11,17 +11,7 @@ In this tutorial, you'll learn how to run the Argo Workflows codebase locally, i
 ## What is Argo Workflows?
 
 Argo Workflows is an open source workflow engine for orchestration of jobs (workflows) on Kubernetes.
-What Argo Workflows allows you to do is to define a set of tasks and its dependencies as a directed acyclic graph (DAG).
-
-To further ground what a workflow is, we can examine a particular instance of a workflow, ETL workloads.
-ETL is an extremely common process used for integrating multiple sources of data into one centralised location so that it can be consumed by downstream tasks such as analytics, machine learning, etc.
-
-ETL is quite simple, it follows the three simple steps.
-  - Extract - Raw data is extracted from multiple sources
-  - Transform - Various preprocessing steps are performed such as cleansing, normalization
-  - Load - The new data is loaded into a database for use in downstream tasks
-
-That said, Argo Workflows can do more than just ETL. It's a good fit for general workflows be it CI/CD, Bioinformatics, infrastructure automation, and more.
+What Argo Workflows allows you to do is to define a set of tasks and its dependencies as a directed acyclic graph (DAG). Argo Workflows is commonly used for ETL and CI workloads on Kubernetes.
 
 ## How to run Argo Workflows
 
