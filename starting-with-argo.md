@@ -308,7 +308,7 @@ minikube status
 Of course, had you installed `kubectl`, you would also be able to view information about the cluster.
 
 ## Setting up Docker for minikube
-minikube runs in a VM, the Docker images you build locally are not accessible to the Docker deamon in minikube.
+Since minikube runs in a VM, the Docker images you build locally are not accessible to the Docker deamon in minikube.
 You need to build your images on the Docker deamon in minikube. You can do this by pointing the Docker host to minikube.
 This can be achieved by:
 ```bash
