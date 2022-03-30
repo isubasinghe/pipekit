@@ -7,22 +7,23 @@ date: null
 # How to Run Argo Workflows with Minikube
 
 ## What is Argo Workflows?
-Argo Workflows is an open source workflow engine for ochestration of jobs (workflows) on Kubernetes.
-This may sound a bit confusing, especially if you are new to software engineering, like myself. What Argo Workflows allows you to do is to define
-a set of tasks and its dependencies as a directed acyclic graph.
+Argo Workflows is an open source workflow engine for orchestration of jobs (workflows) on Kubernetes.
+What Argo Workflows allows you to do is to define a set of tasks and its dependencies as a directed acyclic graph (DAG).
 
 To further ground what a workflow is, we can examine a particular instance of a workflow, ETL workloads.
-ETL is an extremely common process used for integrating multiple sources of data into one centralised location so that it can be consumed by downstream taks such as analytics, machine learning and more.
-ETL is quite simple, it follows the three simple steps.
-  - Extract - Raw data is extracted from multiple sources, business may have multiple sources of data.
-  - Transform - Various preprocessing steps are performed such as cleansing, standardisation.
-  - Load - The new data is loaded into a database for use in downstream tasks.
+ETL is an extremely common process used for integrating multiple sources of data into one centralised location so that it can be consumed by downstream tasks such as analytics, machine learning, etc.
 
-Argo Workflows is more than just ETL, it is a good fit for general workflows be it CI/CD, Bioinformatics and more.
+ETL is quite simple, it follows the three simple steps.
+  - Extract - Raw data is extracted from multiple sources
+  - Transform - Various preprocessing steps are performed such as cleansing, normalization
+  - Load - The new data is loaded into a database for use in downstream tasks
+
+That said, Argo Workflows can do more than just ETL. It's a good fit for general workflows be it CI/CD, Bioinformatics, infrastructure automation, and more.
+
 Now that is out of the way, let's get started on running Argo Workflows locally, I already have it running but I will be following these steps exactly
 on a fresh Ubuntu 20.04 LTS installation.
 
-Alternatively, if you would like to get Argo Workflows up and running for testing purposes I have provided some terraform scripts to get it running on AWS [here](https://github.com/isubasinghe/pipekit).
+Alternatively, if you would like to get Argo Workflows up and running for testing purposes I have provided some [Terraform scripts here](https://github.com/isubasinghe/pipekit) to get it running on AWS.
 
 ## Requirements
 - Docker
