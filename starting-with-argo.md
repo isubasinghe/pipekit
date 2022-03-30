@@ -4,7 +4,9 @@ path: starting-with-argo
 description: null
 date: null
 ---
-# How to Run Argo Workflows with Minikube
+# How to Run the Argo Workflows codebase locally
+
+
 
 ## What is Argo Workflows?
 Argo Workflows is an open source workflow engine for orchestration of jobs (workflows) on Kubernetes.
