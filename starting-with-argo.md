@@ -32,7 +32,7 @@ Alternatively, if you would like to get Argo Workflows up and running in the clo
 - Go 1.17
 
 ### Installing Docker
-The Docker website [provides](https://docs.docker.com/get-docker/) a comprehensive guide into installing docker.
+The Docker website [provides](https://docs.docker.com/get-docker/) a comprehensive guide into installing Docker.
 I have provided the steps for macOS, Windows and Ubuntu below, this should still provide help when installing Docker on other distributions.
 
 #### Windows
@@ -56,7 +56,7 @@ Installing Docker Desktop on macOS is just as simple as on windows:
 #### Ubuntu
 
 ##### Uninstall old versions
-If you already have an old version of docker, you may first uninstall that. This can be fairly easily achieved through running:
+If you already have an old version of Docker, you may first uninstall that. This can be fairly easily achieved through running:
 ```bash
 sudo apt-get remove docker docker-engine docker.io containerd runc
 ```
@@ -66,7 +66,7 @@ remove these first, you may run:
 docker system prune --all
 ```
 ##### Install using the repository
-First let's install the utilities we need to add the docker repository by running the two commands below:
+First let's install the utilities we need to add the Docker repository by running the two commands below:
 ```bash
 sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg lsb-release
@@ -82,20 +82,20 @@ echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
-After this process, the latest docker binaries should be available for download following an update, you can use the below commands to install docker:
+After this process, the latest Docker binaries should be available for download following an update, you can use the below commands to install Docker:
 ```bash
 sudo apt-get update
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
-Verify docker has been installed correctly by running `docker ps` you should see output like this:
+Verify Docker has been installed correctly by running `docker ps` you should see output like this:
 <img src="https://github.com/isubasinghe/pipekit/raw/main/docker.png" alt="docker command line output of CONTAINER ID IMAGE COMMAND CREATED STATUS  PORTS NAMES"/>
 
-In the case you get a permission error, you need to add setup docker to run without root privileges.
+In the case you get a permission error, you need to add setup Docker to run without root privileges.
 
 To do this, you must follow the steps below:
 
-  1. Create the docker group:
+  1. Create the `docker` group:
 
   ```bash
   sudo groupadd docker
